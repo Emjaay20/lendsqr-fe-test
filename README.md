@@ -4,7 +4,7 @@ A fully responsive, pixel-perfect implementation of the Lendsqr dashboard, built
 
 ## Live Demo
 
-[Insert Your Vercel URL Here]
+[https://yusuf-saka-lendsqr-fe-test.vercel.app](https://yusuf-saka-lendsqr-fe-test.vercel.app)
 
 ---
 
