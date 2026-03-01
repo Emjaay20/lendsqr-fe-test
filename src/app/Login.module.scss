@@ -1,0 +1,145 @@
+// src/app/Login.module.scss
+@use '../styles/colors' as *;
+@use '../styles/typography' as *;
+@use '../styles/spacing' as *;
+@use '../styles/mixins' as *;
+
+.container {
+    display: flex;
+    min-height: 100vh;
+    background-color: $bg-white;
+}
+
+/* primary branding panel */
+.leftSide {
+    flex: 1;
+    position: relative;
+    @include flex-center;
+    padding: $space-6;
+
+    // responsive collapse for mobile devices
+    @include mobile {
+        display: none;
+    }
+
+    .logo {
+        position: absolute;
+        top: 5rem;
+        left: 5rem;
+        width: 174px;
+    }
+
+    .illustration {
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+    }
+}
+
+/* authentication form container */
+.rightSide {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: $space-6;
+    background-color: $bg-white;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.02);
+
+    @include mobile {
+        padding: $space-4;
+    }
+}
+
+.formContainer {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.heading {
+    color: $primary-blue;
+    font-size: $text-xxl;
+    font-weight: $weight-bold;
+    margin-bottom: $space-2;
+    letter-spacing: -0.04em;
+}
+
+.subheading {
+    color: $text-main;
+    font-size: $text-lg;
+    font-weight: $weight-regular;
+    margin-bottom: $space-8;
+}
+
+/* input fields & interactive elements */
+.inputGroup {
+    position: relative;
+    margin-bottom: $space-4;
+
+    input {
+        width: 100%;
+        padding: $space-3;
+        border: 2px solid rgba(84, 95, 125, 0.15); // low-contrast boundary
+        border-radius: $radius-sm;
+        font-family: $font-family;
+        font-size: $text-sm;
+        color: $text-main;
+        background-color: $bg-white;
+        transition: border-color 0.3s ease;
+
+        &:focus {
+            outline: none;
+            border-color: $secondary-green;
+        }
+
+        &::placeholder {
+            color: rgba(84, 95, 125, 0.6);
+            font-weight: $weight-regular;
+        }
+    }
+}
+
+.showPasswordBtn {
+    position: absolute;
+    right: $space-3;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: $secondary-green;
+    font-weight: $weight-semibold;
+    font-size: $text-xs;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.forgotPassword {
+    display: block;
+    color: $secondary-green;
+    font-size: $text-xs;
+    font-weight: $weight-semibold;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: $space-5;
+    cursor: pointer;
+}
+
+.submitBtn {
+    width: 100%;
+    background-color: $secondary-green;
+    color: $bg-white;
+    padding: $space-3;
+    border: none;
+    border-radius: $radius-sm;
+    font-family: $font-family;
+    font-weight: $weight-semibold;
+    font-size: $text-sm;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+        opacity: 0.9;
+    }
+}

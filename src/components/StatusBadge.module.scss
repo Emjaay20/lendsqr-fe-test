@@ -1,0 +1,33 @@
+@import '../styles/colors';
+@import '../styles/typography';
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-size: $text-sm;
+    font-weight: $weight-medium;
+}
+
+// strict variant modifiers
+.active {
+    color: $status-active-text;
+    background-color: $status-active-bg;
+}
+
+.inactive {
+    color: $status-inactive-text;
+    background-color: $status-inactive-bg;
+}
+
+.pending {
+    color: $status-pending-text;
+    background-color: $status-pending-bg;
+}
+
+.blacklisted {
+    color: $status-blacklisted-text;
+    background-color: $status-blacklisted-bg;
+}

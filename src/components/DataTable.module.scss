@@ -1,0 +1,239 @@
+@import '../styles/colors';
+@import '../styles/typography';
+@import '../styles/spacing';
+
+.tableWrapper {
+    width: 100%;
+    overflow-x: auto; // horizontal scroll containment on smaller viewports
+    background-color: $bg-white;
+    border-radius: $radius-sm;
+    padding: $space-5;
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+
+    // custom horizontal scrollbar styling
+    &::-webkit-scrollbar {
+        height: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba(33, 63, 125, 0.1);
+        border-radius: 4px;
+    }
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+/* table header structure */
+.thead {
+    th {
+        padding-bottom: $space-4;
+        font-size: $text-xs;
+        font-weight: $weight-semibold;
+        color: $text-main;
+        text-transform: uppercase;
+        white-space: nowrap;
+
+        .headerContent {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            user-select: none;
+
+            .filterIcon {
+                opacity: 0.6;
+                transition: opacity 0.2s ease;
+            }
+
+            &:hover .filterIcon {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+/* table body structure */
+.tbody {
+    tr {
+        border-bottom: 1px solid rgba(33, 63, 125, 0.1);
+        transition: background-color 0.2s ease;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+        &:hover {
+            background-color: rgba(57, 205, 204, 0.02); // interactive row highlight color
+        }
+    }
+
+    td {
+        padding: $space-4 $space-2;
+        font-size: $text-sm;
+        color: $text-main;
+        white-space: nowrap;
+    }
+}
+
+/* action menu trigger button */
+.actionBtn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: $space-1;
+    color: $text-main;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.2s;
+
+    &:hover {
+        background-color: rgba(33, 63, 125, 0.05);
+    }
+}
+
+/* establish positioning context for relative absolute dropdown menus */
+.thead th {
+    position: relative;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: $space-5;
+    margin-top: $space-4;
+
+    .info {
+        font-size: $text-sm;
+        color: $text-main;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        select {
+            background-color: rgba(33, 63, 125, 0.1);
+            border: none;
+            padding: 0.4rem 0.6rem;
+            border-radius: 4px;
+            font-weight: $weight-medium;
+            color: $primary-blue;
+            outline: none;
+            cursor: pointer;
+            font-family: inherit;
+        }
+    }
+
+    .controls {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        .navBtn {
+            background-color: rgba(33, 63, 125, 0.1);
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: $primary-blue;
+            cursor: pointer;
+            transition: background-color 0.2s;
+
+            &:hover:not(:disabled) {
+                background-color: rgba(33, 63, 125, 0.2);
+            }
+
+            &:disabled {
+                opacity: 0.4;
+                cursor: not-allowed;
+            }
+        }
+
+        .pageNumbers {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+
+            .pageBtn {
+                background: none;
+                border: none;
+                color: $text-main;
+                font-size: $text-sm;
+                cursor: pointer;
+                transition: color 0.2s;
+                padding: 0;
+
+                &:hover {
+                    color: $primary-blue;
+                }
+
+                &.active {
+                    color: $text-main;
+                    font-weight: $weight-bold;
+                }
+
+                &.ellipsis {
+                    cursor: default;
+                    color: $text-main;
+                    opacity: 0.6;
+
+                    &:hover {
+                        color: $text-main;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* popup action menu styling */
+.actionContainer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.actionMenu {
+    position: absolute;
+    right: 0;
+    top: 100%; // align directly beneath trigger element
+    background-color: $bg-white;
+    border: 1px solid rgba(84, 95, 125, 0.14);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    border-radius: $radius-sm;
+    padding: $space-2 0;
+    z-index: 20; // maintain z-index priority over standard rows
+    min-width: 160px;
+    display: flex;
+    flex-direction: column;
+
+    .actionItem {
+        display: flex;
+        align-items: center;
+        gap: $space-2;
+        padding: 0.6rem $space-4;
+        color: $text-main;
+        font-size: $text-sm;
+        font-weight: $weight-medium;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+            background-color: rgba(57, 205, 204, 0.06); // interactive hover state
+        }
+
+        // fix SVG width constraint
+        img {
+            flex-shrink: 0;
+        }
+    }
+}

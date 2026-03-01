@@ -1,0 +1,260 @@
+// src/app/dashboard/users/[id]/UserDetails.module.scss
+@import '../../../../styles/colors';
+@import '../../../../styles/typography';
+@import '../../../../styles/spacing';
+@import '../../../../styles/mixins';
+
+.container {
+    padding-bottom: $space-6;
+}
+
+.backBtn {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    color: $text-main;
+    font-size: $text-base;
+    text-decoration: none;
+    margin-bottom: $space-5;
+    transition: opacity 0.2s;
+
+    &:hover {
+        opacity: 0.8;
+    }
+}
+
+.headerRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $space-6;
+
+    @include mobile {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: $space-3;
+    }
+
+    .title {
+        font-size: $text-xl;
+        color: $primary-blue;
+        font-weight: $weight-medium;
+    }
+
+    .actions {
+        display: flex;
+        gap: $space-3;
+
+        button {
+            padding: 0.6rem 1.2rem;
+            border-radius: 8px;
+            font-weight: $weight-semibold;
+            font-size: $text-sm;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            background: transparent;
+            transition: all 0.2s;
+
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+
+        .blacklistBtn {
+            color: $status-blacklisted-text;
+            border: 1px solid $status-blacklisted-text;
+        }
+
+        .activateBtn {
+            color: $status-active-text;
+            border: 1px solid $status-active-text;
+        }
+    }
+}
+
+/* user profile header section */
+.profileCard {
+    background-color: $bg-white;
+    border-radius: $radius-sm;
+    padding: $space-5 $space-5 0 $space-5; // explicit omission of bottom padding for tab alignment
+    @include card-shadow;
+    margin-bottom: $space-5;
+}
+
+.profileTop {
+    display: flex;
+    align-items: center;
+    gap: $space-5;
+    padding-bottom: $space-5;
+
+    @include mobile {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: $space-4;
+    }
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: rgba(33, 63, 125, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        border-radius: 50%;
+    }
+}
+
+.primaryInfo {
+    h2 {
+        color: $primary-blue;
+        font-size: $text-lg;
+        font-weight: $weight-medium;
+        margin-bottom: $space-1;
+    }
+
+    p {
+        color: $text-main;
+        font-size: $text-sm;
+    }
+}
+
+.divider {
+    width: 1px;
+    height: 80px;
+    background-color: rgba(84, 95, 125, 0.2);
+
+    @include mobile {
+        display: none; // suppress vertical separators in stacked layouts
+    }
+}
+
+.tierInfo {
+    p {
+        color: $text-main;
+        font-size: $text-sm;
+        font-weight: $weight-medium;
+        margin-bottom: $space-1;
+    }
+
+    .stars {
+        color: #E9B200; // thematic indicator color
+        display: flex;
+        gap: 2px;
+    }
+}
+
+.walletInfo {
+    h2 {
+        color: $primary-blue;
+        font-size: $text-lg;
+        font-weight: $weight-medium;
+        margin-bottom: $space-1;
+    }
+
+    p {
+        color: $text-main;
+        font-size: $text-xs;
+    }
+}
+
+.tabs {
+    display: flex;
+    justify-content: space-between;
+    margin-top: $space-4;
+    overflow-x: auto; // flexible horizontal scroll for constrained viewports
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.tab {
+    padding: $space-2 $space-4;
+    color: $text-main;
+    font-size: $text-base;
+    cursor: pointer;
+    position: relative;
+    white-space: nowrap;
+    transition: color 0.2s;
+
+    &.activeTab {
+        color: $secondary-green;
+
+        // active state indicator
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -1px; // optical alignment offset
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: $secondary-green;
+        }
+    }
+}
+
+/* comprehensive user attributes matrix */
+.detailsCard {
+    background-color: $bg-white;
+    border-radius: $radius-sm;
+    padding: $space-5;
+    @include card-shadow;
+    display: flex;
+    flex-direction: column;
+    gap: $space-5;
+}
+
+.section {
+    border-bottom: 1px solid rgba(33, 63, 125, 0.1);
+    padding-bottom: $space-5;
+
+    &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+}
+
+.sectionTitle {
+    color: $primary-blue;
+    font-size: $text-base;
+    font-weight: $weight-medium;
+    margin-bottom: $space-4;
+}
+
+.infoGrid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); // dense 5-column layout for expanded viewports
+    gap: $space-4;
+    row-gap: $space-4;
+
+    @include tablet {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include mobile {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+.infoItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+
+    .label {
+        font-size: $text-xs;
+        color: $text-main;
+        text-transform: uppercase;
+    }
+
+    .value {
+        font-size: $text-base;
+        color: $text-main;
+        font-weight: $weight-medium;
+        word-break: break-word; // defensive text wrapping to prevent layout expansion
+    }
+}

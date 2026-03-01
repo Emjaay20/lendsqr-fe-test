@@ -1,0 +1,93 @@
+@use '../styles/colors' as *;
+@use '../styles/mixins' as *;
+@use '../styles/typography' as *;
+
+.sidebar {
+    width: 280px;
+    height: 100%;
+    background-color: $bg-white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+    padding: 2rem 0;
+    overflow-y: auto;
+    font-family: 'Work Sans', sans-serif;
+
+    @include mobile {
+        display: none; // deferring mobile layout toggle to specific resolution breakpoints
+    }
+
+    // customized internal scrollbar for aesthetic consistency
+    &::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: rgba(33, 63, 125, 0.1);
+        border-radius: 4px;
+    }
+}
+
+.topSection {
+    margin-bottom: 2rem;
+}
+
+.categoryTitle {
+    font-size: $text-xs;
+    font-weight: $weight-medium;
+    color: $text-main;
+    text-transform: uppercase;
+    padding: 0 2rem;
+    margin: 1.5rem 0 0.8rem 0;
+    letter-spacing: 0.05em;
+}
+
+.navItem {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 2rem;
+    color: $text-main;
+    font-size: $text-base;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent; // structural border placeholder to avoid layout shifting on hover states
+
+    .icon {
+        opacity: 0.7; // default icon opacity modifier
+        transition: opacity 0.2s ease;
+    }
+
+    &:hover {
+        background-color: rgba(57, 205, 204, 0.06); // standard highlight interaction
+        color: $primary-blue;
+
+        .icon {
+            opacity: 1;
+        }
+    }
+
+    &.active {
+        background-color: rgba(57, 205, 204, 0.06);
+        color: $primary-blue;
+        border-left: 3px solid $secondary-green;
+        font-weight: $weight-medium;
+
+        .icon {
+            opacity: 1;
+        }
+    }
+}
+
+.logoutSection {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(33, 63, 125, 0.1);
+
+    .version {
+        padding-left: 2rem;
+        margin-top: 0.5rem;
+        font-size: $text-xs;
+        color: $text-main;
+        opacity: 0.7;
+    }
+}

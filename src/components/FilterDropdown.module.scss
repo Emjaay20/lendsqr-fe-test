@@ -1,0 +1,81 @@
+@import '../styles/colors';
+@import '../styles/typography';
+@import '../styles/spacing';
+@import '../styles/mixins';
+
+.dropdownContainer {
+    position: absolute;
+    top: 100%; // offset dropdown below the table header
+    left: 0;
+    width: 280px;
+    background-color: $bg-white;
+    border: 1px solid rgba(84, 95, 125, 0.14);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    border-radius: $radius-sm;
+    padding: $space-4;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+    cursor: default; // revert the pointer cursor inherited from the header
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+
+    label {
+        font-size: $text-sm;
+        color: $text-main;
+        font-weight: $weight-medium;
+    }
+
+    input,
+    select {
+        width: 100%;
+        padding: 0.6rem;
+        border: 1px solid rgba(33, 63, 125, 0.2);
+        border-radius: $radius-sm;
+        font-family: inherit;
+        font-size: $text-sm;
+        color: $text-main;
+        background-color: $bg-white;
+        outline: none;
+
+        &:focus {
+            border-color: $secondary-green;
+        }
+    }
+}
+
+.buttonGroup {
+    display: flex;
+    gap: $space-3;
+    margin-top: $space-2;
+
+    button {
+        flex: 1;
+        padding: 0.6rem;
+        border-radius: $radius-sm;
+        font-weight: $weight-semibold;
+        font-size: $text-sm;
+        transition: opacity 0.2s;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+    .resetBtn {
+        background-color: transparent;
+        border: 1px solid $text-main;
+        color: $text-main;
+    }
+
+    .filterBtn {
+        background-color: $secondary-green;
+        border: 1px solid $secondary-green;
+        color: $bg-white;
+    }
+}

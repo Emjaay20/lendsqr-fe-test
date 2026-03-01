@@ -1,0 +1,28 @@
+@use '../../styles/colors' as *;
+@use '../../styles/mixins' as *;
+
+.layoutContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    background-color: $bg-main;
+}
+
+.mainContent {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    margin-top: 80px; // top offset for fixed positioning elements
+}
+
+.contentArea {
+    flex: 1;
+    padding: 3rem;
+    overflow-y: auto; // confining active scroll to main content region
+    background-color: $bg-main;
+
+    @include mobile {
+        padding: 1.5rem;
+    }
+}
