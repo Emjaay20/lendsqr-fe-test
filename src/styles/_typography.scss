@@ -1,4 +1,8 @@
-$font-family: 'Work Sans', sans-serif;
+// The Figma specification uses 'Avenir Next', a proprietary Apple system font.
+// By placing it first in the font stack, macOS and iOS users will see the exact Figma font natively.
+// For Windows, Android, and Linux users, it smoothly falls back to 'Work Sans' (loaded via 
+// Google Fonts), which is a closely matching geometric sans-serif web-safe substitute.
+$font-family: 'Avenir Next', 'Work Sans', sans-serif;
 $font-roboto: 'Roboto', sans-serif;
 
 // Font Sizes
