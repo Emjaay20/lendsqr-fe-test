@@ -10,9 +10,18 @@
     padding: 2rem 0;
     overflow-y: auto;
     font-family: 'Work Sans', sans-serif;
+    transition: transform 0.3s ease;
+    z-index: 200;
 
     @include mobile {
-        display: none; // deferring mobile layout toggle to specific resolution breakpoints
+        position: fixed;
+        top: 0;
+        left: 0;
+        transform: translateX(-100%);
+
+        &.open {
+            transform: translateX(0);
+        }
     }
 
     // customized internal scrollbar for aesthetic consistency
@@ -89,5 +98,20 @@
         font-size: $text-xs;
         color: $text-main;
         opacity: 0.7;
+    }
+}
+
+.overlay {
+    display: none;
+
+    @include mobile {
+        display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.4);
+        z-index: 150;
     }
 }

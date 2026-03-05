@@ -56,7 +56,7 @@ export default function UserDetailsPage() {
                 <div className={styles.profileTop}>
                     <div className={styles.avatar}>
                         {/* generic placeholder graphic pending actual asset integration */}
-                        <span style={{ fontSize: '40px' }}>👤</span>
+                        <span style={{ fontSize: '40px', color: '#213F7D', opacity: 0.4 }}>?</span>
                     </div>
 
                     <div className={styles.primaryInfo}>

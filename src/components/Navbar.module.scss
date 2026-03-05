@@ -15,6 +15,10 @@
     justify-content: space-between;
     padding: 0 2rem;
     z-index: 100;
+
+    @include mobile {
+        padding: 0 1rem;
+    }
 }
 
 .leftSection {
@@ -22,8 +26,16 @@
     align-items: center;
     gap: 8rem;
 
+    @include mobile {
+        gap: 1rem;
+    }
+
     .logo {
         width: 140px;
+
+        @include mobile {
+            width: 100px;
+        }
     }
 }
 
@@ -64,11 +76,19 @@
     align-items: center;
     gap: 2rem;
 
+    @include mobile {
+        gap: 1rem;
+    }
+
     .docsLink {
         text-decoration: underline;
         color: $primary-blue;
         font-family: t.$font-roboto;
         font-weight: 400;
+
+        @include mobile {
+            display: none;
+        }
     }
 
     .profile {
@@ -85,6 +105,28 @@
             color: $primary-blue;
             font-family: t.$font-family;
             font-weight: 500;
+
+            @include mobile {
+                display: none;
+            }
         }
+
+        :global(svg) {
+            @include mobile {
+                display: none;
+            }
+        }
+    }
+}
+
+.mobileMenuBtn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin-right: 1rem;
+
+    @include mobile {
+        display: block; // Only show on mobile
     }
 }

@@ -5,7 +5,7 @@
 
 .dropdownContainer {
     position: absolute;
-    top: 100%; // offset dropdown below the table header
+    top: calc(100% + 10px); // Pushes it exactly 10px below the header text
     left: 0;
     width: 280px;
     background-color: $bg-white;
@@ -13,7 +13,7 @@
     box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
     border-radius: $radius-sm;
     padding: $space-4;
-    z-index: 10;
+    z-index: 100; // Forces it to sit above the table rows
     display: flex;
     flex-direction: column;
     gap: $space-3;

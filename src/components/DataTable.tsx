@@ -57,7 +57,7 @@ export default function DataTable({ users }: DataTableProps) {
                     <thead className={styles.thead}>
                         <tr>
                             {columns.map((col, index) => (
-                                <th key={index}>
+                                <th key={index} style={{ position: 'relative' }}>
                                     <div
                                         className={styles.headerContent}
                                         onClick={() => setActiveFilter(activeFilter === col ? null : col)}

@@ -1,6 +1,7 @@
 @import '../styles/colors';
 @import '../styles/typography';
 @import '../styles/spacing';
+@import '../styles/mixins';
 
 .tableWrapper {
     width: 100%;
@@ -9,6 +10,8 @@
     border-radius: $radius-sm;
     padding: $space-5;
     box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    min-height: 500px;
+    padding-bottom: 100px;
 
     // custom horizontal scrollbar styling
     &::-webkit-scrollbar {
@@ -23,6 +26,8 @@
 
 .table {
     width: 100%;
+    min-width: 1000px;
+    /* Forces the table to stay wide so it scrolls horizontally */
     border-collapse: collapse;
     text-align: left;
 }
@@ -30,12 +35,15 @@
 /* table header structure */
 .thead {
     th {
+        position: relative;
+        /* Anchor for filter dropdown */
         padding-bottom: $space-4;
         font-size: $text-xs;
         font-weight: $weight-semibold;
         color: $text-main;
         text-transform: uppercase;
         white-space: nowrap;
+        /* Prevents text stacking */
 
         .headerContent {
             display: flex;
@@ -76,6 +84,7 @@
         font-size: $text-sm;
         color: $text-main;
         white-space: nowrap;
+        /* Prevents row data from wrapping */
     }
 }
 
@@ -235,5 +244,25 @@
         img {
             flex-shrink: 0;
         }
+    }
+}
+
+/* --- Raw Mobile Override for Pagination --- */
+@media screen and (max-width: 768px) {
+    .pagination {
+        flex-direction: column !important;
+        /* Force the stack */
+        justify-content: center;
+        gap: 1.5rem;
+    }
+
+    .pagination .info {
+        text-align: center;
+    }
+
+    .pagination .controls {
+        flex-wrap: wrap;
+        /* Allows numbers to wrap to a new line if screen is super small */
+        justify-content: center;
     }
 }

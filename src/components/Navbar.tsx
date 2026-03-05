@@ -1,12 +1,15 @@
 import Image from 'next/image';
-import { FiSearch, FiBell } from 'react-icons/fi';
+import { FiSearch, FiBell, FiMenu } from 'react-icons/fi';
 import { IoMdArrowDropdown } from 'react-icons/io';
 import styles from './Navbar.module.scss';
 
-export default function Navbar() {
+export default function Navbar({ onMenuClick }: { onMenuClick?: () => void }) {
     return (
         <nav className={styles.navbar}>
             <div className={styles.leftSection}>
+                <button className={styles.mobileMenuBtn} onClick={onMenuClick}>
+                    <FiMenu size={24} color="#213F7D" />
+                </button>
                 <div className={styles.logo}>
                     <Image src="/logo.svg" alt="Lendsqr Logo" width={140} height={30} priority />
                 </div>

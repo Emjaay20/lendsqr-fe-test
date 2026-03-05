@@ -44,63 +44,66 @@ const sidebarConfig = [
     },
 ];
 
-export default function Sidebar() {
+export default function Sidebar({ isOpen, onClose }: { isOpen?: boolean; onClose?: () => void }) {
     return (
-        <aside className={styles.sidebar}>
+        <>
+            {isOpen && <div className={styles.overlay} onClick={onClose}></div>}
+            <aside className={`${styles.sidebar} ${isOpen ? styles.open : ''}`}>
 
-            {/* primary organization links */}
-            <div className={styles.topSection}>
-                <Link href="#" className={styles.navItem}>
-                    <div className={styles.icon}>
-                        <Image src="/icons/briefcase 1.svg" alt="Organization" width={16} height={16} />
-                    </div>
-                    <span style={{ color: '#213F7D', whiteSpace: 'nowrap' }}>Switch Organization</span>
-                    <Image src="/icons/np_next_2236826_000000 2.svg" alt="Dropdown" width={14} height={14} style={{ marginLeft: 'auto' }} />
-                </Link>
+                {/* primary organization links */}
+                <div className={styles.topSection}>
+                    <Link href="#" className={styles.navItem}>
+                        <div className={styles.icon}>
+                            <Image src="/icons/briefcase 1.svg" alt="Organization" width={16} height={16} />
+                        </div>
+                        <span style={{ color: '#213F7D', whiteSpace: 'nowrap' }}>Switch Organization</span>
+                        <Image src="/icons/np_next_2236826_000000 2.svg" alt="Dropdown" width={14} height={14} style={{ marginLeft: 'auto' }} />
+                    </Link>
 
-                <Link href="/dashboard" className={styles.navItem}>
-                    <div className={styles.icon}>
-                        <Image src="/icons/home 1.svg" alt="Dashboard" width={16} height={16} />
-                    </div>
-                    <span>Dashboard</span>
-                </Link>
-            </div>
-
-            {/* dynamically rendered navigation groups */}
-            {sidebarConfig.map((section, index) => (
-                <div key={index}>
-                    <p className={styles.categoryTitle}>{section.title}</p>
-                    {section.items.map((item, itemIndex) => (
-                        <Link
-                            href={item.path}
-                            key={itemIndex}
-                            className={`${styles.navItem} ${item.active ? styles.active : ''}`}
-                        >
-                            <div className={styles.icon}>
-                                <Image
-                                    src={`/icons/${item.icon}`}
-                                    alt={item.label}
-                                    width={16}
-                                    height={16}
-                                />
-                            </div>
-                            <span>{item.label}</span>
-                        </Link>
-                    ))}
+                    <Link href="/dashboard" className={styles.navItem}>
+                        <div className={styles.icon}>
+                            <Image src="/icons/home 1.svg" alt="Dashboard" width={16} height={16} />
+                        </div>
+                        <span>Dashboard</span>
+                    </Link>
                 </div>
-            ))}
 
-            {/* system actions & footer */}
-            <div className={styles.logoutSection}>
-                <Link href="/" className={styles.navItem}>
-                    <div className={styles.icon}>
-                        <Image src="/icons/sign-out 1.svg" alt="Logout" width={16} height={16} />
+                {/* dynamically rendered navigation groups */}
+                {sidebarConfig.map((section, index) => (
+                    <div key={index}>
+                        <p className={styles.categoryTitle}>{section.title}</p>
+                        {section.items.map((item, itemIndex) => (
+                            <Link
+                                href={item.path}
+                                key={itemIndex}
+                                className={`${styles.navItem} ${item.active ? styles.active : ''}`}
+                            >
+                                <div className={styles.icon}>
+                                    <Image
+                                        src={`/icons/${item.icon}`}
+                                        alt={item.label}
+                                        width={16}
+                                        height={16}
+                                    />
+                                </div>
+                                <span>{item.label}</span>
+                            </Link>
+                        ))}
                     </div>
-                    <span>Logout</span>
-                </Link>
-                <p className={styles.version}>v1.2.0</p>
-            </div>
+                ))}
 
-        </aside>
+                {/* system actions & footer */}
+                <div className={styles.logoutSection}>
+                    <Link href="/" className={styles.navItem}>
+                        <div className={styles.icon}>
+                            <Image src="/icons/sign-out 1.svg" alt="Logout" width={16} height={16} />
+                        </div>
+                        <span>Logout</span>
+                    </Link>
+                    <p className={styles.version}>v1.2.0</p>
+                </div>
+
+            </aside>
+        </>
     );
 }
